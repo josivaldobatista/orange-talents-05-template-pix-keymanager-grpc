@@ -28,6 +28,10 @@ class ChavePix(
   @Column(nullable = false)
   val tipoConta: TipoConta,
 
+  @field:Valid
+  @Embedded
+  val conta: ContaAssociada
+
   ) {
 
   @Id

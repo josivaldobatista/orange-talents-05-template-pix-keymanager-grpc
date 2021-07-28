@@ -3,15 +3,21 @@ package br.com.zup.pix.registra
 import br.com.zup.ChavePixRequest
 import br.com.zup.ChavePixResponse
 import br.com.zup.RegistroChavePixGrpc
+import br.com.zup.integracao.itau.ContasItauClient
 import br.com.zup.pix.ChavePix
+import br.com.zup.pix.ContaAssociada
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
 import javax.inject.Inject
 import javax.inject.Singleton
 import javax.validation.ConstraintViolationException
+import javax.validation.Valid
 
 @Singleton
-class RegistraChavePixEndpoint(@Inject val chavePixRepository: ChavePixRepository) :
+class RegistraChavePixEndpoint(
+  @Inject val chavePixRepository: ChavePixRepository,
+  @Inject val service: NovaChavePixService
+) :
   RegistroChavePixGrpc.RegistroChavePixImplBase() {
 
   override fun registrar(
@@ -19,37 +25,13 @@ class RegistraChavePixEndpoint(@Inject val chavePixRepository: ChavePixRepositor
     responseObserver: StreamObserver<ChavePixResponse>?
   ) {
 
-    if (chavePixRepository.existsByChave(request.chave)) {
-      responseObserver?.onError(
-        (Status.ALREADY_EXISTS
-          .withDescription("Ja existe uma chave com esse id")
-          .asRuntimeException())
-      )
-      return
-    }
-
-    val chavePix = ChavePix(
-      idCliente = request.idCliente,
-      chave = request.chave,
-      tipoChave = request.tipoChave,
-      tipoConta = request.tipoConta
-    )
-
-    try {
-      chavePixRepository.save(chavePix)
-    } catch (e: ConstraintViolationException) {
-      responseObserver?.onError(
-        Status.INVALID_ARGUMENT
-          .withDescription("Dados de entrada invalido")
-          .asRuntimeException()
-      )
-      return
-    }
+    val novaChave = request.toModel()
+    val chaveCriada = service.registra(novaChave)
 
     responseObserver?.onNext(
       ChavePixResponse.newBuilder()
-        .setIdCliente(chavePix.idCliente)
-        .setId(chavePix.id.toString())
+        .setIdCliente(chaveCriada.idCliente)
+        .setId(chaveCriada.id.toString())
         .build()
     )
     responseObserver?.onCompleted()
