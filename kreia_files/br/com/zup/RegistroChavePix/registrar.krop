@@ -1,0 +1,12 @@
+{
+  "details": {
+    "methodFqn": "br.com.zup.RegistroChavePix.registrar"
+  },
+  "requests": [
+    {
+      "location": "registrar-request.json"
+    }
+  ],
+  "operationType": "unary",
+  "invokerName": "grpc"
+}
