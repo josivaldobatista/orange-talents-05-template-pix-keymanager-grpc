@@ -3,6 +3,7 @@ package br.com.zup.pix.registra
 import br.com.zup.ChavePixRequest
 import br.com.zup.ChavePixResponse
 import br.com.zup.RegistroChavePixGrpc
+import br.com.zup.compartilhada.grpc.ErrorHandler
 import br.com.zup.integracao.itau.ContasItauClient
 import br.com.zup.pix.ChavePix
 import br.com.zup.pix.ContaAssociada
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 import javax.validation.ConstraintViolationException
 import javax.validation.Valid
 
+@ErrorHandler
 @Singleton
 class RegistraChavePixEndpoint(
   @Inject val chavePixRepository: ChavePixRepository,
