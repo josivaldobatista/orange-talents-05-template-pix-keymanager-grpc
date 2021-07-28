@@ -31,7 +31,7 @@ class ChavePix(
   ) {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  val id: Long? = null
+  @GeneratedValue
+  val id: UUID? = null
 
 }
