@@ -2,6 +2,7 @@ package br.com.zup.pix
 
 import br.com.zup.TipoChave
 import br.com.zup.TipoConta
+import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
 import javax.validation.Valid
@@ -32,10 +33,13 @@ class ChavePix(
   @Embedded
   val conta: ContaAssociada
 
-  ) {
+) {
 
   @Id
   @GeneratedValue
   val id: UUID? = null
+
+  @Column(nullable = false)
+  val criadoEm: LocalDateTime = LocalDateTime.now()
 
 }

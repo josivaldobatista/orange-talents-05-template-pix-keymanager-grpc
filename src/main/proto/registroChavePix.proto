@@ -7,8 +7,6 @@ option objc_class_prefix = "HLW";
 
 package br.com.zup;
 
-import "google/protobuf/timestamp.proto";
-
 service RegistroChavePix {
   rpc registrar (ChavePixRequest) returns (ChavePixResponse) {}
 }
@@ -32,7 +30,6 @@ message ChavePixRequest {
   TipoConta tipoConta = 2;
   TipoChave tipoChave = 3;
   string chave = 4;
-  google.protobuf.Timestamp criadoEm = 5;
 }
 
 message ChavePixResponse {

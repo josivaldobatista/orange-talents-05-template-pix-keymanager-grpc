@@ -1,7 +1,6 @@
 {
-  "idCliente": "",
+  "idCliente": "5260263c-a3c1-4727-ae32-3bdb2538841b",
   "tipoConta": "CONTA_POUPANCA",
-  "tipoChave": "EMAIL",
-  "chave": "yuri@email.com",
-  "criadoEm": "1970-01-01T00:02:03.000000123Z"
+  "tipoChave": "CPF",
+  "chave": "74185296365"
 }
