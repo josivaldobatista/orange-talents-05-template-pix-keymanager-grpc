@@ -1,6 +1,5 @@
-package br.com.zup.pix.registra
+package br.com.zup.pix
 
-import br.com.zup.pix.ChavePix
 import io.micronaut.data.annotation.Repository
 import io.micronaut.data.repository.CrudRepository
 import java.util.*

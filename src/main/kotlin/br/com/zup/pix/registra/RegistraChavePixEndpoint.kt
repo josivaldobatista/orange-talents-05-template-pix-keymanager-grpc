@@ -4,15 +4,10 @@ import br.com.zup.ChavePixRequest
 import br.com.zup.ChavePixResponse
 import br.com.zup.RegistroChavePixGrpc
 import br.com.zup.compartilhada.grpc.ErrorHandler
-import br.com.zup.integracao.itau.ContasItauClient
-import br.com.zup.pix.ChavePix
-import br.com.zup.pix.ContaAssociada
-import io.grpc.Status
+import br.com.zup.pix.ChavePixRepository
 import io.grpc.stub.StreamObserver
 import javax.inject.Inject
 import javax.inject.Singleton
-import javax.validation.ConstraintViolationException
-import javax.validation.Valid
 
 @ErrorHandler
 @Singleton

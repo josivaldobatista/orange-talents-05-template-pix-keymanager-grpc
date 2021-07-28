@@ -1,10 +1,9 @@
 package br.com.zup.pix.registra
 
-import br.com.zup.ChavePixRequest
 import br.com.zup.integracao.itau.ContasItauClient
 import br.com.zup.pix.ChavePix
 import br.com.zup.pix.ChavePixExistenteException
-import io.grpc.Status
+import br.com.zup.pix.ChavePixRepository
 import io.micronaut.grpc.annotation.GrpcService
 import io.micronaut.validation.Validated
 import org.slf4j.LoggerFactory
