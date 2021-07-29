@@ -1,6 +1,6 @@
 {
   "idCliente": "c56dfef4-7901-44fb-84e2-a2cefb157890",
   "tipoConta": "CONTA_CORRENTE",
-  "tipoChave": "EMAIL",
-  "chave": "rafael.pontes@zup.com.br"
+  "tipoChave": "ALEATORIA",
+  "chave": ""
 }

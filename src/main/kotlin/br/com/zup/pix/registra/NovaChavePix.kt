@@ -1,6 +1,7 @@
 package br.com.zup.pix.registra
 
 import br.com.zup.TipoConta
+import br.com.zup.compartilhada.validation.ValidUUID
 import br.com.zup.pix.ChavePix
 import br.com.zup.pix.ContaAssociada
 import br.com.zup.pix.TipoChave
@@ -14,12 +15,16 @@ import javax.validation.constraints.Size
 @Introspected
 data class NovaChavePix(
 
+  @field:ValidUUID
   @field:NotBlank
   val idCliente: String?,
+
   @field:NotNull
   val tipoChave: TipoChave?,//<- Aqui que estou chamando valiação do enum TipoChave no pacote pix
+
   @field:Size(max = 77)
   val chave: String?,
+
   @field:NotNull
   val tipoConta: TipoConta?
 ) {
