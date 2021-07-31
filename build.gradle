@@ -47,6 +47,10 @@ dependencies {
 
     testImplementation("io.micronaut:micronaut-http-client")
 
+    // Testes
+    testImplementation("com.h2database:h2")
+    testImplementation("org.mockito:mockito-core")
+
 }
 
 

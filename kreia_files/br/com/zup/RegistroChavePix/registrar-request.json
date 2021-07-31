@@ -1,6 +1,6 @@
 {
   "idCliente": "c56dfef4-7901-44fb-84e2-a2cefb157890",
   "tipoConta": "CONTA_CORRENTE",
-  "tipoChave": "ALEATORIA",
-  "chave": ""
+  "tipoChave": "CPF",
+  "chave": "02467781054"
 }
