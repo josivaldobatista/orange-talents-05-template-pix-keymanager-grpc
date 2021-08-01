@@ -100,6 +100,30 @@ internal class RegistraChavePixEndpointTest(
     }
   }
 
+  @Test
+  fun `nao deve registrar chave pix quando nao encontrar dados da conta cliente`() {
+    // Cenário
+    `when`(itauClient.buscaContaPorTipo(idCliente = ID_CLIENTE.toString(), tipo = "CONTA_CORRENTE"))
+      .thenReturn(HttpResponse.notFound())
+
+    // Ação
+    val respostaExcecao = assertThrows<StatusRuntimeException> {
+      grpcClient.registrar(ChavePixRequest.newBuilder()
+        .setIdCliente(ID_CLIENTE.toString())
+        .setTipoChave(TipoChave.CPF)
+        .setChave("63657520325")
+        .setTipoConta(TipoConta.CONTA_CORRENTE)
+        .build()
+      )
+    }
+
+    // Validação
+    with(respostaExcecao) {
+      assertEquals(Status.FAILED_PRECONDITION.code, status.code)
+      assertEquals("Cliente não encontrado no Itau", status.description)
+    }
+  }
+
   private fun chave(
     tipoChave: br.com.zup.pix.TipoChave,
     chave: String = UUID.randomUUID().toString(),
