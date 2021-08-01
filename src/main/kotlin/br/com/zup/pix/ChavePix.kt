@@ -1,6 +1,5 @@
 package br.com.zup.pix
 
-import br.com.zup.TipoConta
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
@@ -16,7 +15,7 @@ import javax.validation.constraints.NotNull
 class ChavePix(
   @field:NotNull
   @Column(nullable = false)
-  val idCliente: String,
+  val idCliente: UUID,
 
   @field:NotNull
   @Enumerated(EnumType.STRING)

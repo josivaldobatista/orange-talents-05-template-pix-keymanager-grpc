@@ -1,9 +1,10 @@
 package br.com.zup.pix.registra
 
 import br.com.zup.ChavePixRequest
-import br.com.zup.TipoConta
 import br.com.zup.pix.TipoChave //<- Meu enum
 import br.com.zup.TipoChave.* //<- GRPC enum
+import br.com.zup.TipoConta.*
+import br.com.zup.pix.TipoConta
 
 fun ChavePixRequest.toModel(): NovaChavePix {
   return NovaChavePix(
@@ -14,7 +15,7 @@ fun ChavePixRequest.toModel(): NovaChavePix {
     },
     chave = chave,
     tipoConta = when (tipoConta) {
-      TipoConta.UNKNOWN_TIPO_CONTA -> null
+      UNKNOWN_TIPO_CONTA -> null
       else -> TipoConta.valueOf(tipoConta.name)
     }
   )

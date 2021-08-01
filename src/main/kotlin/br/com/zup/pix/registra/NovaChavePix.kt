@@ -1,10 +1,10 @@
 package br.com.zup.pix.registra
 
-import br.com.zup.TipoConta
 import br.com.zup.compartilhada.validation.ValidUUID
 import br.com.zup.pix.ChavePix
 import br.com.zup.pix.ContaAssociada
 import br.com.zup.pix.TipoChave
+import br.com.zup.pix.TipoConta
 import io.micronaut.core.annotation.Introspected
 import java.util.*
 import javax.validation.constraints.NotBlank
@@ -31,7 +31,7 @@ data class NovaChavePix(
 
   fun toModel(conta: ContaAssociada): ChavePix {
     return ChavePix(
-      idCliente = UUID.fromString(this.idCliente).toString(),
+      idCliente = UUID.fromString(this.idCliente),
       tipoChave = TipoChave.valueOf(this.tipoChave!!.name),
       chave = if (this.tipoChave == TipoChave.ALEATORIA) UUID.randomUUID().toString() else this.chave!!,
       tipoConta = TipoConta.valueOf(this.tipoConta!!.name),

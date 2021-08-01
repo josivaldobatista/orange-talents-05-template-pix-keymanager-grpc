@@ -27,7 +27,7 @@ class RegistraChavePixEndpoint(
 
     responseObserver?.onNext(
       ChavePixResponse.newBuilder()
-        .setIdCliente(chaveCriada.idCliente)
+        .setIdCliente(chaveCriada.idCliente.toString())
         .setId(chaveCriada.id.toString())
         .build()
     )
